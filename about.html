@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Infino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'wellness-green': '#059669',
+                        'wellness-light-green': '#10B981',
+                        'wellness-dark-green': '#047857',
+                        'wellness-gold': '#F59E0B',
+                        'wellness-white': '#F8FAFC',
+                        'wellness-gray': '#6B7280',
+                        'wellness-dark': '#111827',
+                        'wellness-darker': '#0F172A',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' },
+                            '100%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.8)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #111827 0%, #059669 50%, #10B981 100%);
+        }
+        .wellness-gradient {
+            background: linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%);
+        }
+        .floating-bg {
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(5, 150, 105, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(52, 211, 153, 0.1) 0%, transparent 50%);
+        }
+        .pill-shape {
+            border-radius: 50px 10px 50px 10px;
+        }
+        .wellness-card {
+            background: rgba(248, 250, 252, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .product-package {
+            background: linear-gradient(145deg, #ffffff, #f0f9ff);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+        
+        /* Hide scrollbar */
+        body {
+            overflow-x: hidden;
+        }
+        
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        html {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        *::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="w-full bg-white shadow-sm border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold wellness-gradient bg-clip-text text-transparent">
+                    Infino
+                </div>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html#home" class="text-gray-700 hover:text-wellness-green transition-colors">Home</a>
+                    <a href="index.html#solution" class="text-gray-700 hover:text-wellness-green transition-colors">How it Works</a>
+                    <a href="index.html#pricing" class="text-gray-700 hover:text-wellness-green transition-colors">Shop</a>
+                    <a href="about.html" class="text-wellness-green font-semibold transition-colors">About</a>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <button id="contactBtn" class="border-2 border-wellness-green text-wellness-green hover:bg-wellness-green hover:text-white px-6 py-2 rounded-full transition-all duration-300">
+                        Contact Us
+                    </button>
+                    <button class="bg-wellness-green hover:bg-green-700 text-white px-6 py-2 rounded-full transition-all duration-300 hover:scale-105">
+                        Shop Now
+                    </button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-wellness-green focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html#home" class="text-gray-700 hover:text-wellness-green transition-colors py-2">Home</a>
+                    <a href="index.html#solution" class="text-gray-700 hover:text-wellness-green transition-colors py-2">How it Works</a>
+                    <a href="index.html#pricing" class="text-gray-700 hover:text-wellness-green transition-colors py-2">Shop</a>
+                    <a href="about.html" class="text-wellness-green font-semibold transition-colors py-2">About</a>
+                    <div class="flex flex-col space-y-4 pt-4">
+                        <button id="contactBtnMobile" class="border-2 border-wellness-green text-wellness-green hover:bg-wellness-green hover:text-white px-6 py-2 rounded-full transition-all duration-300">
+                            Contact Us
+                        </button>
+                        <button class="bg-wellness-green hover:bg-green-700 text-white px-6 py-2 rounded-full transition-all duration-300">
+                            Shop Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Image and Content -->
+    <section class="py-6">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <!-- Left Side - Image -->
+                <div class="w-full md:w-1/2">
+                    <img src="images/about.jpg" alt="About Infino" class="w-full h-auto rounded-2xl shadow-xl">
+                </div>
+                
+                <!-- Right Side - Content -->
+                <div class="w-full md:w-1/2">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                        <span class="wellness-gradient bg-clip-text text-transparent">Our Story</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+                        It all started with a small group of friends who shared one big question:
+                        Why do we spend one third of our lives just sleeping?
+
+                        We’d see people with ideas, goals, and dreams but by the time they found the energy to chase them, the day was already over.
+                        It didn’t feel right. There had to be a better way.
+
+                        So, we decided to create something that could change that.
+                        We spent countless nights researching, experimenting, and failing more times than we can count.
+                        But every failure only made us more certain that we were onto something important.
+                        
+                        Then came the breakthrough.
+                        The moment we realized we had built something that could help people live life fully awake
+                        without trading their health or focus to do it.
+
+                        That’s how INFINIO PILL was born.
+                        Not from luck, but from passion.
+                        From the belief that time shouldn’t hold anyone back from what they want to do or who they want to become.
+
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-wellness-green hover:bg-green-700 text-white px-6 py-3 md:px-8 md:py-3 rounded-full transition-all duration-300 hover:scale-105">
+                            Our Mission
+                        </button>
+                        <button class="border-2 border-wellness-green text-wellness-green hover:bg-wellness-green hover:text-white px-6 py-3 md:px-8 md:py-3 rounded-full transition-all duration-300">
+                            Our Vision
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Values Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 bg-wellness-gradient rounded-full mx-auto mb-6 flex items-center justify-center text-3xl">🔬</div>
+                    <h3 class="text-2xl font-bold mb-4">Innovation</h3>
+                    <p class="text-gray-600">We continuously push boundaries to develop cutting-edge wellness solutions.</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 bg-wellness-gradient rounded-full mx-auto mb-6 flex items-center justify-center text-3xl">💚</div>
+                    <h3 class="text-2xl font-bold mb-4">Wellness</h3>
+                    <p class="text-gray-600">Our products prioritize your health and overall well-being above all else.</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 bg-wellness-gradient rounded-full mx-auto mb-6 flex items-center justify-center text-3xl">🤝</div>
+                    <h3 class="text-2xl font-bold mb-4">Integrity</h3>
+                    <p class="text-gray-600">We maintain transparency and honesty in all our business practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    At the heart of our company is a team driven by curiosity, creativity, and a shared mission to make an impact. 
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/1.jpg" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Firas Muhammed</h3>
+                    <p class="text-wellness-green mb-4">Founder / CEO</p>
+                    <p class="text-gray-600">Leadership inspires the team to dream big and aim higher every day.</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/2.jpg" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Anusha T</h3>
+                    <p class="text-wellness-green mb-4">Co-Founder / COO</p>
+                    <p class="text-gray-600">Keeps the engine running smoothly,ensure everything works seamlessly.</p>
+                </div>
+                
+                <!-- New Team Members -->
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/3.jpg" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Barza Paravath</h3>
+                    <p class="text-wellness-green mb-4">CMO</p>
+                    <p class="text-gray-600">Creativity and strategy make sure our message reaches the right audience.</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/4.jpg" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Kasish Kailas</h3>
+                    <p class="text-wellness-green mb-4">CTO</p>
+                    <p class="text-gray-600">Innovation ensures we stay ahead in a fast-paced digital world.</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/5.jpg" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Arya</h3>
+                    <p class="text-wellness-green mb-4">CFO</p>
+                    <p class="text-gray-600">Oversees financial health, making sure every decision supports sustainable growth..</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/6.jpg" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Safa</h3>
+                    <p class="text-wellness-green mb-4">Product Manager</p>
+                    <p class="text-gray-600">Transforms ideas into impactful features, balancing user needs with business goals.</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/7.jpg" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Misla Mehru</h3>
+                    <p class="text-wellness-green mb-4">Manager</p>
+                    <p class="text-gray-600">Ensures our products are both functional and forward-thinking.</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/8.jpg" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Niha</h3>
+                    <p class="text-wellness-green mb-4">UI/UX Designer</p>
+                    <p class="text-gray-600">Crafts beautiful, intuitive experiences that make our products enjoyable and memorable.</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/9.jpg" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Dhiya</h3>
+                    <p class="text-wellness-green mb-4">Marketing Executive</p>
+                    <p class="text-gray-600">Tells our story through engaging content and campaigns.</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/10.jpg" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Fathima Hiba</h3>
+                    <p class="text-wellness-green mb-4">Social Media Executive</p>
+                    <p class="text-gray-600">Turn our ideas into messages that truly resonate with our audience.</p>
+                </div>
+                
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/profile.png" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Ahmed Dilshan</h3>
+                    <p class="text-wellness-green mb-4">Sales Executive</p>
+                    <p class="text-gray-600">Connects our solutions with the right partners and clients, opening doors to opportunity.</p>
+                </div>
+
+                <div class="wellness-card rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="w-32 h-32 bg-wellness-gradient rounded-full mx-auto mb-6 overflow-hidden">
+                        <img src="images/members/profile.png" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Shamil</h3>
+                    <p class="text-wellness-green mb-4">Community Manager</p>
+                    <p class="text-gray-600">Manages our community, ensures every user feels heard, helped and valued.</p>
+                </div>   
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-8">
+                    Ready to <span class="wellness-gradient bg-clip-text text-transparent">Experience</span> Infinite Energy?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 mb-12">
+                    Join thousands of high achievers who've discovered unlimited energy with Infinio
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <button class="bg-wellness-gradient hover:scale-105 text-black px-8 py-4 md:px-12 md:py-6 rounded-full text-lg md:text-xl font-semibold transition-all duration-300 animate-glow">
+                        Shop Now
+                    </button>
+                    <button class="border-2 border-wellness-green text-wellness-green hover:bg-wellness-green hover:text-white px-8 py-4 md:px-12 md:py-6 rounded-full text-lg md:text-xl font-semibold transition-all duration-300">
+                        Learn More
+                    </button>
+                </div>
+                <p class="text-gray-500">Revolutionary energy • No sleep required</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-100 border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold wellness-gradient bg-clip-text text-transparent mb-4">
+                        Infino Wellness
+                    </div>
+                    <p class="text-gray-600 mb-4">Revolutionary energy solutions for unlimited productivity.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Product</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html#solution" class="hover:text-wellness-light-green transition-colors">How it Works</a></li>
+                        <li><a href="#" class="hover:text-wellness-light-green transition-colors">Natural Ingredients</a></li>
+                        <li><a href="#" class="hover:text-wellness-light-green transition-colors">Wellness Research</a></li>
+                        <li><a href="#" class="hover:text-wellness-light-green transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-wellness-light-green transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-wellness-light-green transition-colors">Wellness Team</a></li>
+                        <li><a href="#" class="hover:text-wellness-light-green transition-colors">Careers</a></li>
+                        <li><a href="#" id="contactBtnFooter" class="hover:text-wellness-light-green transition-colors cursor-pointer">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-wellness-light-green transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-wellness-light-green transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-wellness-light-green transition-colors">Wellness Disclaimer</a></li>
+                        <li><a href="#" class="hover:text-wellness-light-green transition-colors">Quality Assurance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-8 pt-8 text-center">
+                <p class="text-gray-500">&copy; 2024 Infino Wellness. All rights reserved. | Unlocking infinite energy, unlimited potential.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold wellness-gradient bg-clip-text text-transparent">Contact Us</h2>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- Contact Numbers -->
+                <div class="wellness-card rounded-xl p-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-wellness-green rounded-full flex items-center justify-center text-white mr-3">📞</span>
+                        Contact Numbers
+                    </h3>
+                    <div class="space-y-2">
+                        <p class="text-lg"><strong>Primary:</strong> <a href="tel:99988002257" class="text-wellness-green hover:underline">+91 99988002257</a></p>
+                        <p class="text-lg"><strong>Secondary:</strong> <a href="tel:99988002258" class="text-wellness-green hover:underline">+91 99988002258</a></p>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="wellness-card rounded-xl p-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-wellness-green rounded-full flex items-center justify-center text-white mr-3">✉️</span>
+                        Email
+                    </h3>
+                    <p class="text-lg">
+                        <a href="mailto:info@infinio.com" class="text-wellness-green hover:underline">info@infinio.com</a>
+                    </p>
+                </div>
+
+                <!-- Website -->
+                <div class="wellness-card rounded-xl p-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-wellness-green rounded-full flex items-center justify-center text-white mr-3">🌐</span>
+                        Website
+                    </h3>
+                    <p class="text-lg">
+                        <a href="https://www.infinio.com" target="_blank" class="text-wellness-green hover:underline">www.infinio.com</a>
+                    </p>
+                </div>
+
+                <!-- Social Media -->
+                <div class="wellness-card rounded-xl p-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-wellness-green rounded-full flex items-center justify-center text-white mr-3">📱</span>
+                        Social Media
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 overflow-hidden">
+                                <img src="images/instagram.png" alt="Instagram" class="w-full h-full object-cover">
+                            </div>
+                            <p class="font-semibold">Instagram</p>
+                            <p class="text-wellness-green">@infinio_pill</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 overflow-hidden">
+                                <img src="images/twitter.png" alt="Twitter/X" class="w-full h-full object-cover">
+                            </div>
+                            <p class="font-semibold">X/Twitter</p>
+                            <p class="text-wellness-green">@infinio_pill</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 overflow-hidden">
+                                <img src="images/linkedin.png" alt="LinkedIn" class="w-full h-full object-cover">
+                            </div>
+                            <p class="font-semibold">LinkedIn</p>
+                            <p class="text-wellness-green">INFINIO Pill</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="tel:99988002257" class="flex-1 bg-wellness-green hover:bg-green-700 text-white px-6 py-3 rounded-full text-center font-semibold transition-all duration-300 hover:scale-105">
+                        Call Now
+                    </a>
+                    <a href="mailto:info@infinio.com" class="flex-1 border-2 border-wellness-green text-wellness-green hover:bg-wellness-green hover:text-white px-6 py-3 rounded-full text-center font-semibold transition-all duration-300">
+                        Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Contact Modal functionality
+        const contactBtn = document.getElementById('contactBtn');
+        const contactBtnFooter = document.getElementById('contactBtnFooter');
+        const contactModal = document.getElementById('contactModal');
+        const closeModal = document.getElementById('closeModal');
+
+        // Function to open modal
+        function openContactModal() {
+            contactModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        // Open modal from navigation
+        contactBtn.addEventListener('click', openContactModal);
+
+        // Open modal from footer
+        contactBtnFooter.addEventListener('click', function(e) {
+            e.preventDefault();
+            openContactModal();
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            contactModal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        });
+
+        // Close modal when clicking outside
+        contactModal.addEventListener('click', function(e) {
+            if (e.target === contactModal) {
+                contactModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !contactModal.classList.contains('hidden')) {
+                contactModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
